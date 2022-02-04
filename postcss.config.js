@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
     "postcss-prepend-imports": {
-      files: ["./src/assets/css/medias.css"],
+      files: ["./styles/medias.css"],
     },
     "postcss-easy-import": {},
     "postcss-nested-ancestors": {},

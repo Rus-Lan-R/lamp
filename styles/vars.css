@@ -1,0 +1,4 @@
+:root {
+  --font-vw: VW Headline OT;
+  --font-brand: var(--font-vw);
+}

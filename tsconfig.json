@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": false,
     "checkJs": false,
     "importHelpers": true,
@@ -15,37 +15,37 @@
     "baseUrl": "./",
     "paths": {
       "@/api/*": [
-        "src/api/*"
+        "api/*"
       ],
       "@/components/*": [
-        "src/components/*"
+        "components/*"
       ],
       "@/pages/*": [
-        "src/pages/*"
+        "pages/*"
       ],
       "@/layouts/*": [
-        "src/layouts/*"
+        "layouts/*"
       ],
       "@/libs/*": [
-        "src/libs/*"
+        "libs/*"
       ],
       "@/helpers/*": [
-        "src/helpers/*"
+        "helpers/*"
       ],
       "@/interfaces/*": [
-        "src/interfaces/*"
+        "interfaces/*"
       ],
       "@/hooks/*": [
-        "src/hooks/*"
+        "hooks/*"
       ],
       "@/packages/*": [
-        "src/packages/*"
+        "packages/*"
       ],
       "@/assets/*": [
-        "src/assets/*"
+        "assets/*"
       ],
       "@/contexts/*": [
-        "src/contexts/*"
+        "contexts/*"
       ],
     },
     "types": [

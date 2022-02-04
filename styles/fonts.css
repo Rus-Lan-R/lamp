@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "VW Headline OT";
+  src: url("../public/fonts/VWHeadlineOT-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VW Headline OT";
+  src: url("../public/fonts/VWHeadlineOT-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VW Headline OT";
+  src: url("../public/fonts/VWHeadlineOT-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
