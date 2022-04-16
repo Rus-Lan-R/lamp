@@ -6,10 +6,9 @@ import { Scene } from "./Scene";
 export const Canva: React.VFC = () => {
   return (
     <>
-      <Canvas camera={{ position: [0, 0, 10], fov: 35 }} id="rtfCanvas">
+      <Canvas camera={{ position: [0, 4, 10], fov: 50 }} id="rtfCanvas">
         <Scene />
       </Canvas>
-      ;
     </>
   );
 };

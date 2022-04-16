@@ -10,49 +10,49 @@ export class ServiceBase {
     const interceptor = axios.interceptors.response.use(
       (response) => response,
       (error) => {
-        if (!Cookies.get("accessToken") || error.response.status !== 401) {
-          return Promise.reject(error);
-        }
+        // if (!Cookies.get("accessToken") || error.response.status !== 401) {
+        //   return Promise.reject(error);
+        // }
+        return Promise.reject(error);
+        // axios.interceptors.response.eject(interceptor);
 
-        axios.interceptors.response.eject(interceptor);
+        // const accessToken = Cookies.get("accessToken");
+        // const refreshToken = Cookies.get("refreshToken");
 
-        const accessToken = Cookies.get("accessToken");
-        const refreshToken = Cookies.get("refreshToken");
-
-        return axios
-          .get(`${this.authBaseURL}/v1/password/reset`, {
-            data: {
-              access_token: accessToken,
-              refresh_token: refreshToken,
-            },
-          })
-          .then((response) => {
-            Cookies.set("accessToken", response.data.accessToken);
-            Cookies.set("refreshToken", response.data.refreshToken);
-            error.response.config.headers.Authorization = `Bearer ${response.data.access_token}`;
-            return axios(error.response.config);
-          })
-          .catch((error) => {
-            Cookies.set("accessToken", "");
-            Cookies.set("refreshToken", "");
-            window.location.assign("/login");
-            return Promise.reject(error);
-          })
-          .finally(() => {
-            this.CreateAxiosResponseInterceptor(config);
-          });
-      }
+        // return axios
+        //   .get(`${this.authBaseURL}/v1/password/reset`, {
+        //     data: {
+        //       access_token: accessToken,
+        //       refresh_token: refreshToken,
+        //     },
+        //   })
+        //   .then((response) => {
+        //     Cookies.set("accessToken", response.data.accessToken);
+        //     Cookies.set("refreshToken", response.data.refreshToken);
+        //     error.response.config.headers.Authorization = `Bearer ${response.data.access_token}`;
+        //     return axios(error.response.config);
+        //   })
+        //   .catch((error) => {
+        //     Cookies.set("accessToken", "");
+        //     Cookies.set("refreshToken", "");
+        //     window.location.assign("/login");
+        //     return Promise.reject(error);
+        //   })
+        //   .finally(() => {
+        //     this.CreateAxiosResponseInterceptor(config);
+        //   });
+      },
     );
   }
 
   protected static async callApi({
-                                   data = null,
-                                   method,
-                                   url,
-                                   baseURL,
-                                   contentType,
-                                   params,
-                                 }: ApiParams) {
+    data = null,
+    method,
+    url,
+    baseURL,
+    contentType,
+    params,
+  }: ApiParams) {
     const config: AxiosRequestConfig = {
       baseURL,
       data,
@@ -63,12 +63,12 @@ export class ServiceBase {
     };
     if (!config.baseURL) config.baseURL = baseURL || Url;
 
-    if (url !== "/login" && Cookies.get("accessToken")) {
-      const token = Cookies.get("accessToken");
-      config.headers = {
-        Authorization: "Bearer " + token,
-      };
-    }
+    // if (url !== "/login" && Cookies.get("accessToken")) {
+    //   const token = Cookies.get("accessToken");
+    //   config.headers = {
+    //     Authorization: "Bearer " + token,
+    //   };
+    // }
     if (contentType) {
       config.headers = {
         "content-type": contentType,
@@ -87,7 +87,7 @@ export class ServiceBase {
           error.response.data.error != null
             ? error.response.data.error
             : error.response.data,
-          error.response.status
+          error.response.status,
         );
         throw new Error(error.response.data.error);
       } else if (error.request) {
@@ -95,7 +95,7 @@ export class ServiceBase {
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
         Handlers.defaultErrorHandler(
-          "Произошла ошибка при отправлении запроса, либо сервер не ответил вовремя"
+          "Произошла ошибка при отправлении запроса, либо сервер не ответил вовремя",
         );
         throw new Error(error);
       } else {
@@ -106,5 +106,4 @@ export class ServiceBase {
   }
   private static authBaseURL =
     "https://master-yamaha-user-access-module.yamaha.dev-kodix.ru";
-
 }
