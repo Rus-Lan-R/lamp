@@ -1,24 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Default from "@/layouts/default";
-import { ThemeContext } from "@/contexts/ThemeContext";
 import styled from "@emotion/styled";
-import Paragraph from "@/packages/typography/paragraph/Paragraph";
 import Container from "@/libs/Container";
-import { FromTest } from "@/components/form/Form";
-import { Canva } from "@/components/canvas/Canva";
 import { useSendMessage } from "@/hooks/useProfile";
-import Dropdown from "@/packages/forms/dropdown/Dropdown";
 import RangeSingle from "@/packages/forms/range-single/RangeSingle";
-import { Input } from "@/packages/form/Input";
-import Button from "@/packages/buttons/button/Button";
-import {
-  SketchPicker,
-  HuePicker,
-  ColorChangeHandler,
-  ColorResult,
-  RGBColor,
-} from "react-color";
-import useDebounce from "@/hooks/useDebounce";
+import { HuePicker, ColorResult, RGBColor } from "react-color";
 
 const StyledColors = styled.div`
   display: flex;
