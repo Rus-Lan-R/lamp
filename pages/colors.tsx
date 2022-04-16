@@ -90,6 +90,15 @@ const Home: React.VFC<any> = (props) => {
               onChange={(value) => handleRequest(`BLUE${value}`)}
             />
           </StyledMiniFrame>
+          <StyledMiniFrame className="space-32">
+            <RangeSingle
+              label="Brightness"
+              min={0}
+              max={255}
+              step={1}
+              onChange={(value) => handleRequest(`L_BRIGHT${value}`)}
+            />
+          </StyledMiniFrame>
         </StyledColors>
       </Container>
     </Default>
